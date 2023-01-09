@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hashing", "Hashing\Hashing.csproj", "{E8DDD643-7D80-4143-AF48-7D284F5D796F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymmetricEncryption", "SymmetricEncryption\SymmetricEncryption.csproj", "{ECDB3F02-DFFC-4200-BF9C-295CB3155F25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{E8DDD643-7D80-4143-AF48-7D284F5D796F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8DDD643-7D80-4143-AF48-7D284F5D796F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8DDD643-7D80-4143-AF48-7D284F5D796F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECDB3F02-DFFC-4200-BF9C-295CB3155F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECDB3F02-DFFC-4200-BF9C-295CB3155F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECDB3F02-DFFC-4200-BF9C-295CB3155F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECDB3F02-DFFC-4200-BF9C-295CB3155F25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
