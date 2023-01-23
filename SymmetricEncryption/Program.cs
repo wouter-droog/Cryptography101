@@ -13,6 +13,9 @@ string iv = "000102030405060708090A0B0C0D0E0F";
 
 Console.WriteLine($"Plain Text: {plainText}");
 
+secretKey = GenerateSecretKey();
+Console.WriteLine($"SecretKey: {secretKey}");
+
 var cipherBytes = EncryptStringToBytes();
 Console.WriteLine($"Cipher Text: {Convert.ToBase64String(cipherBytes)}");
 
@@ -20,8 +23,6 @@ var originalText = DecryptStringFromBytes(cipherBytes);
 Console.WriteLine($"Original Text: {originalText}");
 
 Console.ReadLine();
-
-
 
 
 Aes CreateAesCipher()
@@ -62,4 +63,16 @@ string DecryptStringFromBytes(byte[] cipherText)
     byte[] plainTextBytes = decryptor.TransformFinalBlock(cipherText, 0, cipherText.Length);
     
     return Encoding.UTF8.GetString(plainTextBytes);
+}
+
+// method to generata a random secret key
+string GenerateSecretKey()
+{
+    var key = new byte[32];
+    using (var rng = RandomNumberGenerator.Create())
+    {
+        rng.GetBytes(key);
+    }
+    
+    return Convert.ToHexString(key);
 }
