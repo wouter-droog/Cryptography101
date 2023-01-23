@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hashing", "Hashing\Hashing.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymmetricEncryption", "SymmetricEncryption\SymmetricEncryption.csproj", "{ECDB3F02-DFFC-4200-BF9C-295CB3155F25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssymetricEncryption", "AssymetricEncryption\AssymetricEncryption.csproj", "{B4A97EC7-A5B6-4DD2-A016-403E88B760DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{ECDB3F02-DFFC-4200-BF9C-295CB3155F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECDB3F02-DFFC-4200-BF9C-295CB3155F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECDB3F02-DFFC-4200-BF9C-295CB3155F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4A97EC7-A5B6-4DD2-A016-403E88B760DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4A97EC7-A5B6-4DD2-A016-403E88B760DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4A97EC7-A5B6-4DD2-A016-403E88B760DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4A97EC7-A5B6-4DD2-A016-403E88B760DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
