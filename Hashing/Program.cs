@@ -22,7 +22,7 @@ Console.WriteLine(hex);
 Console.WriteLine("-------------------");
 
 // Now let's try it with a salt
-var salt =  Encoding.UTF8.GetBytes("This is a salt"); // should be unique for each user
+var salt =  "This is a salt"u8.ToArray(); // should be unique for each user
 
 // Combine the salt and the plain text
 var saltedPlainText = new byte[salt.Length + plainText.Length];

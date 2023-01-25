@@ -1,8 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-
-using System.Security.Cryptography;
 using System.Text;
+using SymmetricEncryption;
 
 
 string plainText = "Hello World!";
@@ -10,69 +9,29 @@ string secretKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D
 string iv = "000102030405060708090A0B0C0D0E0F";
 
 
+AesCipher aesCipher = new AesCipher(secretKey, iv);
 
 Console.WriteLine($"Plain Text: {plainText}");
 
-secretKey = GenerateSecretKey();
-Console.WriteLine($"SecretKey: {secretKey}");
 
-var cipherBytes = EncryptStringToBytes();
+var cipherBytes = aesCipher.EncryptStringToBytes(plainText);
 Console.WriteLine($"Cipher Text: {Convert.ToBase64String(cipherBytes)}");
 
-var originalText = DecryptStringFromBytes(cipherBytes);
+var originalText = aesCipher.DecryptStringFromBytes(cipherBytes);
 Console.WriteLine($"Original Text: {originalText}");
 
 Console.ReadLine();
 
+// The byte array size should match the key size (256 bits = 32 bytes)
+// The iv by array size should match the block size (128 bits = 16 bytes)
+var secretKeyBytes = Enumerable.Take("You can not take random string as secret key or IV."u8.ToArray(), 32);
 
-Aes CreateAesCipher()
-{
-    var cipher = Aes.Create();
-    cipher.KeySize = 256;
-    cipher.BlockSize = 128;
-    cipher.Padding = PaddingMode.ISO10126; // results in most random padding
-    cipher.Mode = CipherMode.CBC; // will take in IV as a random seed
-    
- 
-    cipher.Key = Convert.FromHexString(secretKey);
-    cipher.IV = Convert.FromHexString(iv); // This should be random and shared with the receiver
-    
-    Console.WriteLine($"IV: {Convert.ToBase64String(cipher.IV)}");
-    
-    return cipher;
-}
+var aesCipher2 = new AesCipher(Convert.ToHexString(secretKeyBytes.ToArray()), iv);
 
-// encrypt method using the CreateAesCipher method
-byte[] EncryptStringToBytes()
-{
-    Aes cipher = CreateAesCipher();
-    
-    ICryptoTransform encryptor = cipher.CreateEncryptor();
-    byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-    byte[] cipherText = encryptor.TransformFinalBlock(plainTextBytes, 0, plainTextBytes.Length);
-    
-    return cipherText;
-}
+var cipherBytes2 = aesCipher2.EncryptStringToBytes(plainText);
+Console.WriteLine($"Cipher Text: {Convert.ToBase64String(cipherBytes2)}");
 
-// decrypt method using the CreateAesCipher method
-string DecryptStringFromBytes(byte[] cipherText)
-{
-    Aes cipher = CreateAesCipher();
-    
-    ICryptoTransform decryptor = cipher.CreateDecryptor();
-    byte[] plainTextBytes = decryptor.TransformFinalBlock(cipherText, 0, cipherText.Length);
-    
-    return Encoding.UTF8.GetString(plainTextBytes);
-}
+var originalText2 = aesCipher2.DecryptStringFromBytes(cipherBytes2);
+Console.WriteLine($"Original Text: {originalText2}");
 
-// method to generata a random secret key
-string GenerateSecretKey()
-{
-    var key = new byte[32];
-    using (var rng = RandomNumberGenerator.Create())
-    {
-        rng.GetBytes(key);
-    }
-    
-    return Convert.ToHexString(key);
-}
+Console.ReadLine();
