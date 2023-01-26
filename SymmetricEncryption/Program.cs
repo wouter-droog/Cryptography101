@@ -29,9 +29,11 @@ var secretKeyBytes = Enumerable.Take("You can not take random string as secret k
 var aesCipher2 = new AesCipher(Convert.ToHexString(secretKeyBytes.ToArray()), iv);
 
 var cipherBytes2 = aesCipher2.EncryptStringToBytes(plainText);
+var cipherText2 = Convert.ToBase64String(cipherBytes2);
 Console.WriteLine($"Cipher Text: {Convert.ToBase64String(cipherBytes2)}");
 
 var originalText2 = aesCipher2.DecryptStringFromBytes(cipherBytes2);
-Console.WriteLine($"Original Text: {originalText2}");
+var originalText22 = aesCipher2.DecryptStringFromBase64(cipherText2);
+Console.WriteLine($"Original Text: {originalText22}");
 
 Console.ReadLine();

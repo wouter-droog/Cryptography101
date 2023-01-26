@@ -41,6 +41,12 @@ public class AesCipher
     
         return Encoding.UTF8.GetString(plainTextBytes);
     }
+    
+    public string DecryptStringFromBase64(string cipherText)
+    {
+        byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
+        return DecryptStringFromBytes(cipherTextBytes);
+    }
 
     private Aes CreateCipher(string secretKey, string iv)
     {
