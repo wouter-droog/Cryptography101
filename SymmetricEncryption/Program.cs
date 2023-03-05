@@ -4,7 +4,10 @@ using System.Text;
 using SymmetricEncryption;
 
 
-string plainText = "Hello World!";
+string plainText = """"
+Hello 
+World!
+"""";
 string secretKey = "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F";
 string iv = "000102030405060708090A0B0C0D0E0F";
 
@@ -18,7 +21,7 @@ var cipherBytes = aesCipher.EncryptStringToBytes(plainText);
 Console.WriteLine($"Cipher Text1: {Convert.ToBase64String(cipherBytes)}");
 
 var originalText = aesCipher.DecryptStringFromBytes(cipherBytes);
-Console.WriteLine($"Original Text1: {originalText}");
+Console.WriteLine($"Original Text1:\n{originalText}");
 
 Console.ReadLine();
 
@@ -34,6 +37,6 @@ Console.WriteLine($"Cipher Text2: {Convert.ToBase64String(cipherBytes2)}");
 
 var originalText2 = aesCipher2.DecryptStringFromBytes(cipherBytes2);
 var originalText22 = aesCipher2.DecryptStringFromBase64(cipherText2);
-Console.WriteLine($"Original Text2: {originalText22}");
+Console.WriteLine($"Original Text2:\n{originalText22}");
 
 Console.ReadLine();
