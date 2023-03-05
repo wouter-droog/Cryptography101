@@ -15,10 +15,10 @@ Console.WriteLine($"Plain Text: {plainText}");
 
 
 var cipherBytes = aesCipher.EncryptStringToBytes(plainText);
-Console.WriteLine($"Cipher Text: {Convert.ToBase64String(cipherBytes)}");
+Console.WriteLine($"Cipher Text1: {Convert.ToBase64String(cipherBytes)}");
 
 var originalText = aesCipher.DecryptStringFromBytes(cipherBytes);
-Console.WriteLine($"Original Text: {originalText}");
+Console.WriteLine($"Original Text1: {originalText}");
 
 Console.ReadLine();
 
@@ -30,10 +30,10 @@ var aesCipher2 = new AesCipher(Convert.ToHexString(secretKeyBytes.ToArray()), iv
 
 var cipherBytes2 = aesCipher2.EncryptStringToBytes(plainText);
 var cipherText2 = Convert.ToBase64String(cipherBytes2);
-Console.WriteLine($"Cipher Text: {Convert.ToBase64String(cipherBytes2)}");
+Console.WriteLine($"Cipher Text2: {Convert.ToBase64String(cipherBytes2)}");
 
 var originalText2 = aesCipher2.DecryptStringFromBytes(cipherBytes2);
 var originalText22 = aesCipher2.DecryptStringFromBase64(cipherText2);
-Console.WriteLine($"Original Text: {originalText22}");
+Console.WriteLine($"Original Text2: {originalText22}");
 
 Console.ReadLine();
